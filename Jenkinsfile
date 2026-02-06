@@ -1,1 +1,1 @@
-deploy
+print("hello")
