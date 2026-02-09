@@ -8,10 +8,13 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Execute Python') {
+        stage('Debug and Run') {
             steps {
-                echo 'Attempting to run the python script...'
-                // Use 'python' or 'python3' depending on your local installation
+                // List files to make sure script.py is there
+                bat 'dir' 
+                // Print python version to make sure it's installed
+                bat 'python --version'
+                // Run unbuffered
                 bat 'python -u test.py'
             }
         }
