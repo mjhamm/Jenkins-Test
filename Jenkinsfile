@@ -2,20 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                echo 'Building..'
+                // Jenkins pulls the code from GitHub automatically here
+                checkout scm
             }
         }
-        stage('Test') {
+        stage('Execute Python') {
             steps {
-                echo 'Testing..'
+                echo 'Attempting to run the python script...'
+                // Use 'python' or 'python3' depending on your local installation
+                bat 'python script.py'
             }
         }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
+    }
+    
+    post {
+        always {
+            echo 'Pipeline finished.'
         }
     }
 }
