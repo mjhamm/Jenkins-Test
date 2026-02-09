@@ -12,7 +12,7 @@ pipeline {
             steps {
                 echo 'Attempting to run the python script...'
                 // Use 'python' or 'python3' depending on your local installation
-                bat 'python test.py'
+                bat 'python -u test.py'
             }
         }
     }
